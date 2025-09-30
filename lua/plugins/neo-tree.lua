@@ -1,4 +1,4 @@
-return{
+return {
   "nvim-neo-tree/neo-tree.nvim",
   branch = "v3.x",
   dependencies = {
@@ -12,5 +12,8 @@ return{
   ---@type neotree.Config?
   opts = {
     -- fill any relevant options here
+    window = {
+      position = "right",
+    },
   }
 }

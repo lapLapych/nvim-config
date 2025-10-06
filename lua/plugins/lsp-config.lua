@@ -1,28 +1,33 @@
 return {
-	{
-		"williamboman/mason.nvim",
-		config = function()
-			require("mason").setup()
-		end,
-	},
-	{
-		"williamboman/mason-lspconfig.nvim",
-		config = function()
-			require("mason-lspconfig").setup({
-				ensure_installed = { "lua_ls", "clangd", "pyright" },
-			})
-		end,
-	},
-	{
-		"neovim/nvim-lspconfig",
-		config = function()
-			vim.lsp.enable("lua_ls")
-			vim.lsp.enable("clangd")
-			vim.lsp.enable("pyright")
-			vim.lsp.enable("roslyn")
+  {
+    "williamboman/mason.nvim",
+    config = function()
+      require("mason").setup({
+        registries = {
+          "github:mason-org/mason-registry",
+          "github:Crashdummyy/mason-registry",
+        },
+      })
+    end,
+  },
+  {
+    "williamboman/mason-lspconfig.nvim",
+    config = function()
+      require("mason-lspconfig").setup({
+        ensure_installed = { "lua_ls", "clangd", "pyright" },
+      })
+    end,
+  },
+  {
+    "neovim/nvim-lspconfig",
+    config = function()
+      vim.lsp.enable("lua_ls")
+      vim.lsp.enable("clangd")
+      vim.lsp.enable("pyright")
+      vim.lsp.enable("roslyn")
 
-			vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
-			vim.keymap.set({ "n" }, "<leader>ca", vim.lsp.buf.code_action, {})
-		end,
-	},
+      vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
+      vim.keymap.set({ "n" }, "<leader>ca", vim.lsp.buf.code_action, {})
+    end,
+  },
 }
